@@ -42,9 +42,9 @@ while ($value != "") {
     findAnnounces ($domCentre);
     //look for the next page link
     $value = "";
-    //foreach($domCentre->find('.next') as $data){
-    //    $value = $data->href;
-    //}
+    foreach($domCentre->find('.next') as $data){
+        $value = $data->href;
+    }
 }
 
 /***************** Functions *********************/
@@ -76,25 +76,27 @@ function storeJson($strData){
     $record=array(); 
     //decode the string
     $jsonVar = json_decode($strData);
-   echo $strData;     
+    //echo $strData;     
     //if the decode ended with no error
-    //if (json_last_error() === JSON_ERROR_NONE) { 
-    //    $record["id"] = $jsonVar -> id;
-    //    $record["submitter"] = $jsonVar -> submitter;
-    //    $record["inserted"] = $jsonVar -> inserted;
-    //    $record["immotype"] = $jsonVar -> immotype;
-    //    $record["price"] = $jsonVar -> price;
-//	$record["rent"] = $jsonVar -> rent;
-//        $record["location"] = $jsonVar -> location;
-//        $record["surface"] = $jsonVar -> surface;
-//        $record["city"] = $jsonVar -> city;
-//        $record["price_by_m2"] = $jsonVar -> price_by_m2;
+    if (json_last_error() === JSON_ERROR_NONE) { 
+        $record["id"] = $jsonVar -> id;
+		$record["price"] = $jsonVar -> price;
+		$record["location"] = $jsonVar -> location;
+		$record["country"] = $jsonVar -> country;
+		$record["address"] = $jsonVar -> address;
+		$record["surface"] = $jsonVar -> surface;
+		$record["ground_surface"] = $jsonVar -> ground_surface;
+        $record["bedrooms_num"] = $jsonVar -> bedrooms_num;
+        $record["carparks_num"] = $jsonVar -> carparks_num;
+        $record["garages_num"] = $jsonVar -> garages_num;
+        $record["terrace_surface"] = $jsonVar -> terrace_surface;
+        $record["energy_class"] = $jsonVar -> energy_class;
         
         //save the record
-//        if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
-//           scraperwiki::save_sqlite(array('id'), $record);
-//        }
-//    }    
+        if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
+            scraperwiki::save_sqlite(array('id'), $record);
+        }
+    }    
 } 
 
 ?>
