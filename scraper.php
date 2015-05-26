@@ -80,17 +80,18 @@ function storeJson($strData){
     //if the decode ended with no error
     if (json_last_error() === JSON_ERROR_NONE) { 
         $record["id"] = $jsonVar -> id;
-		$record["price"] = $jsonVar -> price;
-		$record["location"] = $jsonVar -> location;
-		$record["country"] = $jsonVar -> country;
-		$record["address"] = $jsonVar -> address;
-		$record["surface"] = $jsonVar -> surface;
-		$record["ground_surface"] = $jsonVar -> ground_surface;
+	$record["price"] = $jsonVar -> price;
+	$record["location"] = $jsonVar -> location;
+	$record["country"] = $jsonVar -> country;
+	$record["address"] = $jsonVar -> address;
+	$record["surface"] = $jsonVar -> surface;
+	$record["ground_surface"] = $jsonVar -> ground_surface;
         $record["bedrooms_num"] = $jsonVar -> bedrooms_num;
         $record["carparks_num"] = $jsonVar -> carparks_num;
         $record["garages_num"] = $jsonVar -> garages_num;
         $record["terrace_surface"] = $jsonVar -> terrace_surface;
         $record["energy_class"] = $jsonVar -> energy_class;
+        $record["url"] = "http://www.athome.lu/immobilier-neuf/residence/centre/bertrange/bertrange/" . $jsonVar -> id;
         
         //save the record
         if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
