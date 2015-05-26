@@ -42,9 +42,9 @@ while ($value != "") {
     findAnnounces ($domCentre);
     //look for the next page link
     $value = "";
-    foreach($domCentre->find('.next') as $data){
-        $value = $data->href;
-    }
+    //foreach($domCentre->find('.next') as $data){
+    //    $value = $data->href;
+    //}
 }
 
 /***************** Functions *********************/
@@ -76,23 +76,26 @@ function storeJson($strData){
     $record=array(); 
     //decode the string
     $jsonVar = json_decode($strData);
+  foreach ($jsonVar as $trend){         
+   echo $trend['text']."\n";     
+  } 
     //if the decode ended with no error
-    if (json_last_error() === JSON_ERROR_NONE) { 
-        $record["id"] = $jsonVar -> id;
-        $record["submitter"] = $jsonVar -> submitter;
-        $record["inserted"] = $jsonVar -> inserted;
-        $record["immotype"] = $jsonVar -> immotype;
-        $record["price"] = $jsonVar -> price;
-	$record["rent"] = $jsonVar -> rent;
-        $record["location"] = $jsonVar -> location;
-        $record["surface"] = $jsonVar -> surface;
-        $record["city"] = $jsonVar -> city;
-        $record["price_by_m2"] = $jsonVar -> price_by_m2;
+    //if (json_last_error() === JSON_ERROR_NONE) { 
+    //    $record["id"] = $jsonVar -> id;
+    //    $record["submitter"] = $jsonVar -> submitter;
+    //    $record["inserted"] = $jsonVar -> inserted;
+    //    $record["immotype"] = $jsonVar -> immotype;
+    //    $record["price"] = $jsonVar -> price;
+//	$record["rent"] = $jsonVar -> rent;
+//        $record["location"] = $jsonVar -> location;
+//        $record["surface"] = $jsonVar -> surface;
+//        $record["city"] = $jsonVar -> city;
+//        $record["price_by_m2"] = $jsonVar -> price_by_m2;
         
         //save the record
-        if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
-           scraperwiki::save_sqlite(array('id'), $record);
-        }
+//        if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
+//           scraperwiki::save_sqlite(array('id'), $record);
+//        }
     }    
 } 
 
