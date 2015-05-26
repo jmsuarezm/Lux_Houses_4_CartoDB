@@ -96,7 +96,7 @@ function storeJson($strData){
 //        if ($record["price"] <> 0 or $record["rent"] <> 0 or $record["price_by_m2"] <> 0) {
 //           scraperwiki::save_sqlite(array('id'), $record);
 //        }
-    }    
+//    }    
 } 
 
 ?>
