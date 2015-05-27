@@ -42,9 +42,9 @@ while ($value != "") {
     findAnnounces ($domCentre);
     //look for the next page link
     $value = "";
-    foreach($domCentre->find('.next') as $data){
-        $value = $data->href;
-    }
+//    foreach($domCentre->find('.next') as $data){
+//        $value = $data->href;
+//    }
 }
 
 /***************** Functions *********************/
