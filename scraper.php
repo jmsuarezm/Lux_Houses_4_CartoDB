@@ -42,9 +42,9 @@ while ($value != "") {
     findAnnounces ($domCentre);
     //look for the next page link
     $value = "";
-//    foreach($domCentre->find('.next') as $data){
-//        $value = $data->href;
-//    }
+    foreach($domCentre->find('.next') as $data){
+        $value = $data->href;
+    }
 }
 
 /***************** Functions *********************/
@@ -58,7 +58,7 @@ function findAnnounces($strDataDom){
             $htmlContent = scraperWiki::scrape($value);
             //look for the start of the json record wich has all the information of the announce
             //and manually trim it to the correct json format
-            echo $htmlContent;
+            //echo $htmlContent;
             $strStart = strpos($htmlContent, "initGoogleMap");
             $strEnd = strpos($htmlContent, "#containerGoogleMap");
     
@@ -79,8 +79,7 @@ function storeJson($strData){
     $jsonVar = json_decode($strData);
     //echo $strData;     
     //if the decode ended with no error
-    if (false){
-    //if (json_last_error() === JSON_ERROR_NONE) { 
+    if (json_last_error() === JSON_ERROR_NONE) { 
         $record["id"] = $jsonVar -> id;
 	$record["price"] = $jsonVar -> price;
 	$record["location"] = $jsonVar -> location;
