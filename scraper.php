@@ -58,6 +58,7 @@ function findAnnounces($strDataDom){
             $htmlContent = scraperWiki::scrape($value);
             //look for the start of the json record wich has all the information of the announce
             //and manually trim it to the correct json format
+            echo $htmlContent;
             $strStart = strpos($htmlContent, "initGoogleMap");
             $strEnd = strpos($htmlContent, "#containerGoogleMap");
     
@@ -76,7 +77,7 @@ function storeJson($strData){
     $record=array(); 
     //decode the string
     $jsonVar = json_decode($strData);
-    echo $strData;     
+    //echo $strData;     
     //if the decode ended with no error
     if (false){
     //if (json_last_error() === JSON_ERROR_NONE) { 
