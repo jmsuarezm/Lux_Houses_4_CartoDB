@@ -76,9 +76,10 @@ function storeJson($strData){
     $record=array(); 
     //decode the string
     $jsonVar = json_decode($strData);
-    //echo $strData;     
+    echo $strData;     
     //if the decode ended with no error
-    if (json_last_error() === JSON_ERROR_NONE) { 
+    if (false){
+    //if (json_last_error() === JSON_ERROR_NONE) { 
         $record["id"] = $jsonVar -> id;
 	$record["price"] = $jsonVar -> price;
 	$record["location"] = $jsonVar -> location;
